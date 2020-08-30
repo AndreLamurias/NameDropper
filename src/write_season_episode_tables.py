@@ -9,8 +9,8 @@ output_dir = Path(output_dir)
 output_dir.mkdir(parents=True, exist_ok=True)
 all_entities = {}
 entities_per_episode = {}
-series_characters = ["jack", "liz", "donaghy", "tracy", "frank", "pete", "josh", "don", "geiss",
-                         "jonathan", "ken", "kenneth", "parcel"]
+with open("30rock_names.txt", 'r') as f:
+    series_characters = [c.strip() for c in f.readlines()]
 
 pathlist = Path(season_dir).glob(pattern="*")
 for path in pathlist:

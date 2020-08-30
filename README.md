@@ -24,4 +24,7 @@ This command will write one jsonl file per episode, where each line is an entity
 We can explore these entities with the `analyse_season.py` and `write_season_episodes_tables.py` script.
 While the former tries to link personalities mention across various episodes, the former generates html reports on each episode.
 
-## Future plans
+## TODO
+- [ ] Generalize for any tv show
+- [ ] Use argpase
+- [ ] improve HTML reports
