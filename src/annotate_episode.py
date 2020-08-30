@@ -22,7 +22,11 @@ def annotate(text):
     # TODO: remove series character names
     entity_text = ", ".join(list(person_entities))
     entities = []
-    episode = tagme.annotate(entity_text)
+    try:
+        episode = tagme.annotate(entity_text)
+    except:
+        print("error getting entities for ", entity_text)
+        return None
     # Use annotations with a score higher than 0.1
     for ann in episode.get_annotations(0.1):
         eid = ann.entity_id
@@ -31,6 +35,7 @@ def annotate(text):
         try:
             page = wikipedia.page(pageid=eid, preload=True)
             page_categories = page.categories
+            # working under the assumption that any real people mention have XXXX births category
             if any([c.endswith("births") for c in page_categories]):
                 page_summary = page.summary
                 print(escore, eid, ename, ann.mention, page_categories[0])
